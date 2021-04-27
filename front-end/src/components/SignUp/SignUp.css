@@ -1,5 +1,4 @@
 .container {
-  font-size: 100px !important;
   display: flex;
   flex-direction: column;
   width: 50%;
