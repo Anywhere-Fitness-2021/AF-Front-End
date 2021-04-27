@@ -1,16 +1,17 @@
 import {Link} from 'react-router-dom';
-
-export default function UserOnboarding(){
-return(
-    <div>
+export default function InstructorOnboarding(){
+    return(
+        <div>
         <div>
             <h1>Welcome to Anywhere Fitness!</h1>
             <p>Here you can:</p>
             <ul>
-                <li>Sign Up/Attend Class</li>
+                <li>Create classes</li>
                 <li>View number of registered attendees</li>
-                <li>View intensity Level</li>
-                <li>View duration</li>
+                <li>Set max class size</li>
+                <li>Set location</li>
+                <li>Set intensity Level</li>
+                <li>Set duration</li>
             </ul>
             
         </div>
@@ -18,7 +19,7 @@ return(
        
             <Link to = "/"><button>Ok</button></Link>
      
+        </div>            
         </div>
-    </div>
-)
+    )
 }
