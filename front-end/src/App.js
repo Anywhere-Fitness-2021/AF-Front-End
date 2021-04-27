@@ -5,8 +5,10 @@ import * as Yup from 'yup';
 //STYLING IMPORTS
 import "../src/index.css";
 import Logo from "./AnywhereFitnessLogo.PNG";
-//COMPONENT IMPORTS
-import SignUp from './components/SignUp/SignUp';
+
+//COMPONENTS
+import CreateClass from "./components/CreateClass";
+import SignUp from './components/SignUp';
 
 const Data = {
   username: '',
@@ -78,7 +80,7 @@ function App() {
 
     setUsers([...newArray]);
     setValues(Data);
-    console.log({ users });
+
     history.push('/');
   };
 
@@ -111,9 +113,7 @@ function App() {
       <h1 className="mainHeading">Anywhere Fitness</h1>
       <Switch>
         <Route exact path='/'>
-          <div>
-            <h2>Home</h2>
-          </div>
+          <CreateClass />
         </Route>
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />

@@ -2,7 +2,7 @@
 import React from "react";
 //STYLING IMPORTS
 import { FormControl, FormHelperText, InputLabel, TextField, Select, MenuItem, Button } from '@material-ui/core';
-import './SignUp.css';
+import '../styling/SignUp.css';
 
 function SignUp(props) {
 
@@ -64,7 +64,7 @@ function SignUp(props) {
             </FormControl>
           )
         }
-        <Button variant='contained' color='primary' className='button' type='submit' disabled={disabled}>
+        <Button className='button' variant='contained' color='primary' className='button' type='submit' disabled={disabled}>
           Sign Up
         </Button>
       </div>
