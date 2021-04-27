@@ -6,6 +6,7 @@ import Logo from "./AnywhereFitnessLogo.PNG";
 
 //COMPONENTS
 import CreateClass from "./components/CreateClass";
+import UserOnboarding from "./components/UserOnboarding";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
      <div className="logoAndHeading"></div>
      <img className="logo" src={Logo} alt="gym barbell"/>
      <h1 className="mainHeading">Anywhere Fitness</h1>
+     {/* <UserOnboarding/> */}
 
      <CreateClass />
    </div>
