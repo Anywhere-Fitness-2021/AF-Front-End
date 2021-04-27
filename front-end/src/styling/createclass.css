@@ -1,0 +1,36 @@
+h2 {
+    font-size: 4em;
+    text-align: center;
+    padding: 1.5em;
+    margin: 0 auto;
+}
+
+#class-div {
+    
+    text-align: center;
+    padding: 0;
+}
+
+#class-form {
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 4em;
+    padding: 0;
+    
+}
+
+label {
+    padding: .8em;
+   
+}
+input {
+    width: 50%;
+}
+
+button {
+    width: 20%;
+    padding: 1em;
+    margin: 2em;
+}
