@@ -13,26 +13,26 @@ const initialState = {
     },
     classes: [
         {
-            id: '1',
+            classId: 1,
             name: 'Yoga 4 Everyone!',
             type: 'Yoga',
             startTime: '6:00',
             duration: '30 minutes',
             intensityLevel: 'Beginner',
             location: 'Los Angeles',
-            attendees: '16',
-            maxClassSize: '20'
+            attendees: 16,
+            maxClassSize: 20
         },
         {
-            id: '2',
+            classId: 2,
             name: 'Pilates 4 Enthusiasts!',
             type: 'Pilates',
             startTime: '18:00',
             duration: '60 minutes',
             intensityLevel: 'Intermediate',
             location: 'Miami',
-            attendees: '14',
-            maxClassSize: '20'
+            attendees: 16,
+            maxClassSize: 20
         }
     ]
 }
