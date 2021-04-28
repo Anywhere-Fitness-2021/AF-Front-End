@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 import "../styling/createclass.css"
 
-
 const initialState = {
     isLoading: false,
     error: 'Test error message.',
@@ -36,7 +35,6 @@ const initialState = {
     ]
 }
 
-
 const CreateClass = () => {
 
     const [classes, setClasses] = useState([]);
@@ -64,11 +62,9 @@ const CreateClass = () => {
         //     .catch();
     };
 
-
     const clearForm = e => {
         setNewClass(initialState)
     }
-
 
     return (
         <div>
@@ -142,20 +138,10 @@ const CreateClass = () => {
                     
                     <button onSubmit={handleSubmit}>Create Class</button>
                     <button onSubmit={clearForm}>Clear</button>
-
-
                 </form>
-
-
             </classdiv>
         </div>
     )
-
-
 }
-
-
-
-
 
 export default CreateClass;

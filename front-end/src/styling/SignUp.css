@@ -12,3 +12,13 @@
 .button {
   width: 100%;
 }
+
+.signup-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.link-to-login {
+  margin-top: 5%;
+}

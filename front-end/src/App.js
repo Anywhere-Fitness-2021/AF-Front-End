@@ -1,6 +1,6 @@
 //TECH IMPORTS
 import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Link, Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 //STYLING IMPORTS
 import "../src/index.css";
@@ -114,20 +114,23 @@ function App() {
       <div className="logoAndHeading"></div>
       <img className="logo" src={Logo} alt="gym barbell"/>
       <h1 className="mainHeading">Anywhere Fitness</h1>
+
       <Switch>
         <Route path='/createclass'>
           <CreateClass />
         </Route>
+
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
         </Route>
+
         <Route path='/'>
           <HomePage />
         </Route>
       </Switch>
+
     </Fragment>
   );
-
 }
 
 export default App;
