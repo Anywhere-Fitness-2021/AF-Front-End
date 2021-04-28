@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     IsLoading: false,
-    Error: 'Test error message.',
+    Error: '',
     ActiveUser: {
         Role: 'Client',
         Username: 'yogafan123'

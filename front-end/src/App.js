@@ -2,16 +2,18 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Route, Switch, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
+
 //STYLING IMPORTS
 import "../src/index.css";
 import Logo from "./AnywhereFitnessLogo.PNG";
-import HomePage from "./components/HomePage";
 
 //COMPONENTS
 import CreateClass from "./components/CreateClass";
 import SignUp from './components/SignUp';
 import InstructorOnboarding from './components/InstructorOnboarding';
 import UserOnboarding from './components/UserOnboarding';
+import HomePage from "./components/HomePage";
+import Testing from './components/Testing';
 
 const Data = {
   username: '',
@@ -122,6 +124,10 @@ function App() {
 
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
+        </Route>
+
+        <Route path='/testing'>
+          <Testing />
         </Route>
 
         <Route path='/'>
