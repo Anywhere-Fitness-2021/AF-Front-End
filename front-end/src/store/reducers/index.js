@@ -5,34 +5,34 @@ import {
 } from '../actions';
 
 const initialState = {
-    isLoading: false,
-    error: 'Test error message.',
-    activeUser: {
-        role: 'Client',
-        username: 'yogafan123'
+    IsLoading: false,
+    Error: 'Test error message.',
+    ActiveUser: {
+        Role: 'Client',
+        Username: 'yogafan123'
     },
-    classes: [
+    Classes: [
         {
-            classId: 1,
-            name: 'Yoga 4 Everyone!',
-            type: 'Yoga',
-            startTime: '6AM',
-            duration: '30 Minutes',
-            intensityLevel: 'Beginner',
-            location: 'Los Angeles',
-            attendees: 16,
-            maxClassSize: 20
+            ClassId: 1,
+            Name: 'Yoga 4 Everyone!',
+            Type: 'Yoga',
+            StartTime: '6AM',
+            Duration: '30 Minutes',
+            IntensityLevel: 'Beginner',
+            Location: 'Los Angeles',
+            Attendees: 16,
+            MaxClassSize: 20
         },
         {
-            classId: 2,
-            name: 'Pilates 4 Enthusiasts!',
-            type: 'Pilates',
-            startTime: '6PM',
-            duration: '60 Minutes',
-            intensityLevel: 'Intermediate',
-            location: 'Miami',
-            attendees: 16,
-            maxClassSize: 20
+            ClassId: 2,
+            Name: 'Pilates 4 Enthusiasts!',
+            Type: 'Pilates',
+            StartTime: '6PM',
+            Duration: '60 Minutes',
+            IntensityLevel: 'Intermediate',
+            Location: 'Miami',
+            Attendees: 16,
+            MaxClassSize: 20
         }
     ]
 }
@@ -42,26 +42,26 @@ export const reducer = (state = initialState, action) => {
         case FETCH_CLASSES_START:
             return {
                 ...state,
-                isLoading: true,
-                error: '',
-                user: state.user,
-                classes: []
+                IsLoading: true,
+                Error: '',
+                ActiveUser: state.ActiveUser,
+                Classes: []
             };
         case FETCH_CLASSES_SUCCESS:
             return {
                 ...state,
-                isLoading: false,
-                error: '',
-                user: state.user,
-                classes: action.payload
+                IsLoading: false,
+                Error: '',
+                ActiveUser: state.ActiveUser,
+                Classes: action.payload
             };
         case FETCH_CLASSES_FAILURE:
             return {
                 ...state,
-                isLoading: false,
-                error: action.payload,
-                user: state.user,
-                classes: []
+                IsLoading: false,
+                Error: action.payload,
+                ActiveUser: state.ActiveUser,
+                Classes: []
             };
         default:
             return state;
