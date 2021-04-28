@@ -9,6 +9,19 @@ import HomePage from "./components/HomePage";
 
 //COMPONENTS
 import CreateClass from "./components/CreateClass";
+<<<<<<< HEAD
+import UserOnboarding from "./components/UserOnboarding";
+import InstructorOnboarding from "./components/InstructorOnboarding";
+
+function App() {
+  return (
+   <div>
+     <div className="logoAndHeading"></div>
+     <img className="logo" src={Logo} alt="gym barbell"/>
+     <h1 className="mainHeading">Anywhere Fitness</h1>
+     {/* <UserOnboarding/> */}
+     {/* <InstructorOnboarding/> */}
+=======
 import SignUp from './components/SignUp';
 
 const Data = {
@@ -39,6 +52,7 @@ const Instructor = Yup.object().shape({
 });
 
 function App() {
+>>>>>>> cf5add0c34cc9a28a429e0e803fcddf1df00e522
 
   const [users, setUsers] = useState([]);
   const [values, setValues] = useState(Data);
