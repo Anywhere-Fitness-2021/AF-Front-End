@@ -87,13 +87,15 @@ function App() {
     setUsers([...newArray]);
     setValues(Data);
 
-    console.log(newUser);
-
     axios
-      .post('ttps://anywherefitness2021.herokuapp.com/api/users/register', newUser)
+      .post('https://anywherefitness2021.herokuapp.com/api/users/register', {
+        Username: newUser.Username,
+        Password: newUser.Password,
+        Role: newUser.Role
+      })
       .then(resp => {
         console.log(resp.data);
-        history.push('/signup');
+        history.push('/');
       })
       .catch(err => {
         console.log({ err });
