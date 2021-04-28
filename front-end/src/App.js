@@ -5,6 +5,11 @@ import * as Yup from 'yup';
 //STYLING IMPORTS
 import "../src/index.css";
 import Logo from "./AnywhereFitnessLogo.PNG";
+<<<<<<< HEAD
+import HomePage from "./components/HomePage";
+import { BrowserRouter as Router , Link, Switch, Route } from 'react-router-dom';
+
+=======
 
 //COMPONENTS
 import CreateClass from "./components/CreateClass";
@@ -36,6 +41,7 @@ const Instructor = Yup.object().shape({
   role: Schema.role,
   token: Schema.token
 });
+>>>>>>> a244fff81d08c54c7191507aaf331b8568475443
 
 function App() {
 
@@ -107,6 +113,12 @@ function App() {
   }, [values]);
 
   return (
+<<<<<<< HEAD
+
+    <HomePage/>
+
+  
+=======
     <Fragment>
       <div className="logoAndHeading"></div>
       <img className="logo" src={Logo} alt="gym barbell"/>
@@ -120,6 +132,7 @@ function App() {
         </Route>
       </Switch>
     </Fragment>
+>>>>>>> a244fff81d08c54c7191507aaf331b8568475443
   );
 
 }
