@@ -7,7 +7,7 @@ const Testing = (props) => {
     return (
         <div className='testing-container'>
             <br/>
-            {props.isLoading ? 'Loading' : '---Not loading at the moment---'} <br/>
+            {props.isLoading ? 'Loading...' : '---Not loading at the moment---'} <br/>
             {props.error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.error}</p> : '---No error to display at the moment---'} <br/><br/>
             ---The current active user is--- <br/>
             Username: {props.activeUser.Username} <br/>

@@ -7,34 +7,8 @@ import {
 const initialState = {
     IsLoading: false,
     Error: '',
-    ActiveUser: {
-        Role: 'Client',
-        Username: 'yogafan123'
-    },
-    Classes: [
-        {
-            ClassId: 1,
-            Name: 'Yoga 4 Everyone!',
-            Type: 'Yoga',
-            StartTime: '6AM',
-            Duration: '30 Minutes',
-            IntensityLevel: 'Beginner',
-            Location: 'Los Angeles',
-            Attendees: 16,
-            MaxClassSize: 20
-        },
-        {
-            ClassId: 2,
-            Name: 'Pilates 4 Enthusiasts!',
-            Type: 'Pilates',
-            StartTime: '6PM',
-            Duration: '60 Minutes',
-            IntensityLevel: 'Intermediate',
-            Location: 'Miami',
-            Attendees: 16,
-            MaxClassSize: 20
-        }
-    ]
+    ActiveUser: {},
+    Classes: []
 }
 
 export const reducer = (state = initialState, action) => {
