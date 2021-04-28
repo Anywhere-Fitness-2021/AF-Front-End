@@ -1,25 +1,135 @@
 * {
   box-sizing: border-box;
   max-width: 100%;
+  font-size: 1.5rem;
 }
+
 html {
-  font-size: 62.5%;
+  font-size: 100%;
   font-family: 'Playfair Display', serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   color: white;
+  height: 100vh;
 }
+
 .logo {
   height: 4rem;
   display: inline;
   position: relative;
   top: 1rem;
 }
+
+.home-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.container {
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 16px 8px;
+  padding: 16px;
+  background-color: white;
+}
+
 .mainHeading {
   display: inline;
   margin: 1rem;
 }
+
 .logoAndHeading {
   display: flex;
   flex-direction: row;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 32px;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #1c5d76;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.home-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.getStarted-button.md-button {
+  margin-top: -16px;
+  width: 120px;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 8px;
+  border: none;
+  border-radius: 2px;
+  padding: 0 16px;
+  min-width: 64px;
+  height: 36px;
+  vertical-align: middle;
+  text-align: center;
+
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #4296cb;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+ 
+  transition: box-shadow 0.2s;
+}
+.description{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    
+    padding-bottom:.1%;
+    margin-bottom:2.5%; 
+}
+
+.description .text{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding:4% 0;
+  text-align:center;
+  width: 45%;
+  font-size: 1.5rem;
+}
+
+h1{
+  font-size: 3.5rem;
 }
