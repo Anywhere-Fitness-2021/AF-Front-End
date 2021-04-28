@@ -113,14 +113,16 @@ function App() {
       <img className="logo" src={Logo} alt="gym barbell"/>
       <h1 className="mainHeading">Anywhere Fitness</h1>
       <Switch>
-        <Route exact path='/'>
+        <Route path='/createclass'>
           <CreateClass />
         </Route>
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
         </Route>
+        <Route path='/'>
+          <HomePage />
+        </Route>
       </Switch>
-      <HomePage/>
     </Fragment>
   );
 
