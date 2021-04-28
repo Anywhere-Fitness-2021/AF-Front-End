@@ -2,6 +2,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Route, Switch, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 //STYLING IMPORTS
 import "../src/index.css";
@@ -16,30 +17,30 @@ import HomePage from "./components/HomePage";
 import Testing from './components/Testing';
 
 const Data = {
-  username: '',
-  password: '',
-  role: '',
-  token: ''
+  Username: '',
+  Password: '',
+  Role: '',
+  Token: ''
 };
 
 const Schema = {
-  username: Yup.string().min(3, 'Please include a username with at least 3 characters in length.'),
-  password: Yup.string().min(8, 'Please include a password with at least 8 characters in length.'),
-  role: Yup.string().required('Please make sure that a role is selected.'),
-  token: Yup.string().required('A special string is required in order to sign up.')
+  Username: Yup.string().min(3, 'Please include a username with at least 3 characters in length.'),
+  Password: Yup.string().min(8, 'Please include a password with at least 8 characters in length.'),
+  Role: Yup.string().required('Please make sure that a role is selected.'),
+  Token: Yup.string().required('A special string is required in order to sign up.').matches('af9001')
 };
 
 const Client = Yup.object().shape({
-  username: Schema.username,
-  password: Schema.password,
-  role: Schema.role
+  Username: Schema.Username,
+  Password: Schema.Password,
+  Role: Schema.Role
 });
 
 const Instructor = Yup.object().shape({
-  username: Schema.username,
-  password: Schema.password,
-  role: Schema.role,
-  token: Schema.token
+  Username: Schema.Username,
+  Password: Schema.Password,
+  Role: Schema.Role,
+  Token: Schema.Token
 });
 
 function App() {
@@ -62,7 +63,7 @@ function App() {
           setErrors({ ...errors, [name]: err.errors[0] });
         });
     };
-    if (name === 'token') {
+    if (name === 'Token') {
       Valid(Instructor);
     }
     else {
@@ -73,12 +74,12 @@ function App() {
 
   const submit = () => {
     const newUser = {
-      username: values.username,
-      password: values.password,
-      role: values.role
+      Username: values.Username,
+      Password: values.Password,
+      Role: values.Role
     };
 
-    if (values.role === 'Instructor') Object.assign(newUser, { token: values.token });
+    if (values.Role === 'Instructor') Object.assign(newUser, { Token: values.Token });
 
     const newArray = users;
     newArray.push(newUser);
@@ -86,11 +87,21 @@ function App() {
     setUsers([...newArray]);
     setValues(Data);
 
-    history.push('/');
+    console.log(newUser);
+
+    axios
+      .post('ttps://anywherefitness2021.herokuapp.com/api/users/register', newUser)
+      .then(resp => {
+        console.log(resp.data);
+        history.push('/signup');
+      })
+      .catch(err => {
+        console.log({ err });
+      });
   };
 
   useEffect(() => {
-    switch (values.role) {
+    switch (values.Role) {
       case ('Client'): {
         Client.isValid(values).then((valid) => {
           setDisabled(!valid);

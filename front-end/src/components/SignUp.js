@@ -27,42 +27,42 @@ function SignUp(props) {
             <TextField
               label='Username'
               type='text'
-              name='username'
-              value={values.username}
+              name='Username'
+              value={values.Username}
               onChange={onChange}
             />
-            <FormHelperText>{errors.username}</FormHelperText>
+            <FormHelperText>{errors.Username}</FormHelperText>
           </FormControl>
           <FormControl>
             <TextField
               label='Password'
               type='text'
-              name='password'
-              value={values.password}
+              name='Password'
+              value={values.Password}
               onChange={onChange}
             />
-            <FormHelperText>{errors.password}</FormHelperText>
+            <FormHelperText>{errors.Password}</FormHelperText>
           </FormControl>
           <FormControl>
             <InputLabel className='label'>Role</InputLabel>
-            <Select name='role' value={values.role} onChange={onChange}>
+            <Select name='Role' value={values.Role} onChange={onChange}>
               <MenuItem value=''>Select</MenuItem>
               <MenuItem value='Client'>Client</MenuItem>
               <MenuItem value='Instructor'>Instructor</MenuItem>
             </Select>
-            <FormHelperText>{errors.role}</FormHelperText>
+            <FormHelperText>{errors.Role}</FormHelperText>
           </FormControl>
           {
-            values.role === 'Instructor' && (
+            values.Role === 'Instructor' && (
               <FormControl>
                 <TextField
                   label='Token'
                   type='text'
-                  name='token'
-                  value={values.token}
+                  name='Token'
+                  value={values.Token}
                   onChange={onChange}
                 />
-                <FormHelperText>{errors.token}</FormHelperText>
+                <FormHelperText>{errors.Token}</FormHelperText>
               </FormControl>
             )
           }
