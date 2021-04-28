@@ -64,7 +64,7 @@ function SignUp(props) {
             </FormControl>
           )
         }
-        <Button className='button' variant='contained' color='primary' className='button' type='submit' disabled={disabled}>
+        <Button className='button' variant='contained' color='primary' type='submit' disabled={disabled}>
           Sign Up
         </Button>
       </div>
