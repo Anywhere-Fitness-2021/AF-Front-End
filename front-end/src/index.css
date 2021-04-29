@@ -166,3 +166,23 @@ h1{
 #signout-button {
   width: 150px;
 }
+
+#insAdd-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#cliAdd-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#edit-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#delete-option {
+  width: 150px;
+  margin: 5px;
+}
