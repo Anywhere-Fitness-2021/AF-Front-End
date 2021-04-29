@@ -29,13 +29,17 @@ input {
     width: 50%;
 }
 
-#final-input {
-    margin-bottom: 50px;
-}
-
 button {
     width: 20%;
     padding: 1em;
     padding-bottom: 40px;
     margin: 2em;
+}
+
+#final-input {
+    margin-bottom: 50px;
+}
+
+#create-class-submit {
+    margin-bottom: 25px;
 }

@@ -135,7 +135,7 @@ const CreateClass = () => {
                             placeholder="what is the max class size..."
                             onChange={handleChange}
                         />
-                    <input type='submit' value='Create Class'/>
+                    <input id='create-class-submit' type='submit' value='Create Class'/>
                     <button onClick={clearForm}>Clear</button>
                     <button onClick={routeToClassList}>Cancel</button>
                 </form>
