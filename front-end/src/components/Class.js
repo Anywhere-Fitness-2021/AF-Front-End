@@ -1,4 +1,4 @@
-function TestClass(props) {
+function Class(props) {
     const { name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize } = props;
 
     return (
@@ -15,4 +15,4 @@ function TestClass(props) {
     );
 }
 
-export default TestClass;
+export default Class;

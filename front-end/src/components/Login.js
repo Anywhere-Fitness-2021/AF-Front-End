@@ -27,7 +27,7 @@ const Login = () => {
           setLoginError('');
           window.localStorage.setItem('token', JSON.stringify(resp.data.token));
           console.log(resp.data);
-          history.push('/');
+          history.push('/classes');
         })
         .catch((err) => {
           console.log({ err })
