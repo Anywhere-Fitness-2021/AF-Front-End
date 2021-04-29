@@ -1,6 +1,6 @@
 //TECH IMPORTS
 import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
 
@@ -29,7 +29,7 @@ const Schema = {
   Username: Yup.string().min(3, 'Please include a username with at least 3 characters in length.'),
   Password: Yup.string().min(8, 'Please include a password with at least 8 characters in length.'),
   Role: Yup.string().required('Please make sure that a role is selected.'),
-  Token: Yup.string().required('A special string is required in order to sign up.').matches('af9001')
+  Token: Yup.string().required('A special string is required in order to sign up. For demonstration purposes, please enter "af9001" in this field.').matches('af9001')
 };
 
 const Client = Yup.object().shape({
@@ -52,7 +52,7 @@ function App() {
   const [errors, setErrors] = useState(Data);
   const [disabled, setDisabled] = useState(true);
 
-  const history = useHistory();
+  let history = useHistory();
 
   const update = (name, value) => {
     const Valid = (Type) => {
@@ -97,7 +97,7 @@ function App() {
       })
       .then(resp => {
         console.log(resp.data);
-        history.push('/');
+        newUser.Role === 'Instructor' ? history.push('/onboarding-instructor') : history.push('/onboarding-user');
       })
       .catch(err => {
         console.log({ err });
@@ -127,42 +127,40 @@ function App() {
   }, [values]);
 
   return (
-    <Router>
-      <Fragment>
-        <div className="logoAndHeading"></div>
-        <img className="logo" src={Logo} alt="gym barbell"/>
-        <h1 className="mainHeading">Anywhere Fitness</h1>
+    <Fragment>
+      <div className="logoAndHeading"></div>
+      <img className="logo" src={Logo} alt="gym barbell"/>
+      <h1 className="mainHeading">Anywhere Fitness</h1>
 
-        <Switch>
-          <PrivateRoute exact path='/classes/createclass' component={CreateClass} />
+      <Switch>
+        <PrivateRoute path='/classes/createclass' component={CreateClass} />
 
-          <Route exact path='/login'>
-            <Login />
-          </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
 
-          <Route exact path='/onboarding-instructor'>
-            <InstructorOnboarding />
-          </Route>
+        <Route path='/onboarding-instructor'>
+          <InstructorOnboarding />
+        </Route>
 
-          <Route exact path='/onboarding-user'>
-            <UserOnboarding />
-          </Route>
+        <Route path='/onboarding-user'>
+          <UserOnboarding />
+        </Route>
 
-          <Route exact path='/signup'>
-            <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
-          </Route>
+        <Route path='/signup'>
+          <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
+        </Route>
 
-          <Route exact path='/testing'>
-            <Testing />
-          </Route>
+        <Route path='/testing'>
+          <Testing />
+        </Route>
 
-          <Route exact path='/'>
-            <HomePage />
-          </Route>
-        </Switch>
+        <Route path='/'>
+          <HomePage />
+        </Route>
+      </Switch>
 
-      </Fragment>
-    </Router>
+    </Fragment>
   );
 }
 
