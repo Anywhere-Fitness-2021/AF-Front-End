@@ -1,143 +1,143 @@
 import React, {useState} from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import "../styling/createclass.css"
 
-const initialState = {
-    isLoading: false,
-    error: 'Test error message.',
-    activeUser: {
-        role:'Client',
-        username: 'yogafan123'
-    },
-    classes: [
-        {
-            classId: '1',
-            name: 'Yoga 4 Everyone!',
-            type: 'Yoga',
-            startTime: '6:00',
-            duration: '30 minutes',
-            intenstityLevel: 'Beginner',
-            location: 'Los Angeles',
-            attendees: '16',
-            maxClassSize: '20'
-        },
-        {
-            classId: '2',
-            name: 'Pilates 4 Enthusiasts!',
-            type: 'Pilates',
-            startTime: '18:00',
-            duration: '60 minutes',
-            intenstityLevel: 'Intermediate',
-            location: 'Miami',
-            attendees: '14',
-            maxClassSize: '20'
-        }
-    ]
-}
-
 const CreateClass = () => {
-
-    const [classes, setClasses] = useState([]);
-    const [newClass, setNewClass] = useState(initialState);
+    let history = useHistory();
+    const [newClass, setNewClass] = useState({
+        ClassId: '',
+        Name: '',
+        Type: '',
+        StartTime: '',
+        Duration: '',
+        IntensityLevel: '',
+        Location: '',
+        Attendees: 0,
+        MaxClassSize: 20
+    });
 
     const handleChange = e => {
-        const {name, value} = e.target;
-        
-        setNewClass({
-            ...newClass, [name]: value
-        });
-    }
+        if (e.target.name === 'Attendees' || e.target.name === 'MaxClassSize') {
+            setNewClass({
+                ...newClass,
+                ClassId: Math.random(),
+                [e.target.name]: Number(e.target.value)
+            });
+        } else {
+            setNewClass({
+                ...newClass,
+                ClassId: Math.random(),
+                [e.target.name]: e.target.value
+            });
+        }
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        setClasses([
-            ...classes, newClass
-        ]);
-
-
-        // axiosWithAuth()
-        //     .post()
-        //     .then()
-        //     .catch();
+        axios
+            .post('https://anywherefitness2021.herokuapp.com/api/classes', newClass)
+            .then(resp => {
+                console.log(resp.data);
+                // history.push('/');
+            })
+            .catch(err => {
+                console.log({ err })
+            });
     };
 
     const clearForm = e => {
-        setNewClass(initialState)
-    }
+        e.preventDefault();
+        setNewClass({
+            ClassId: '',
+            Name: '',
+            Type: '',
+            StartTime: '',
+            Duration: '',
+            IntensityLevel: '',
+            Location: '',
+            Attendees: 0,
+            MaxClassSize: 20            
+        });
+    };
+
+    const routeToClassList = () => {
+        history.push('/');
+    };
 
     return (
         <div>
             <classdiv id="class-div">
                 <h2>Create A New Class</h2>
-                <form id="class-form" >
-                    <label htmlFor="name"/>Name:
+                <form id="class-form" onSubmit={handleSubmit}>
+                    <label>Name:</label>
                         <input id=""
-                            name="name"
+                            name="Name"
                             type="text"
-                            value={newClass.name}
+                            value={newClass.Name}
                             placeholder="class name..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="type"/>Type:
+                    <label>Type:</label>
                         <input id=""
-                            name="type"
+                            name="Type"
                             type="text"
-                            value={newClass.type}
+                            value={newClass.Type}
                             placeholder="class type..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="starttime"/>Start Time:
+                    <label>Start Time:</label>
                         <input id=""
-                            name="starttime"
+                            name="StartTime"
                             type="text"
-                            value={newClass.starttime}
+                            value={newClass.StartTime}
                             placeholder="what time does class begin..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="duration"/>Duration:
+                    <label>Duration:</label>
                         <input id=""
-                            name="duration"
+                            name="Duration"
                             type="text"
-                            value={newClass.duration}
+                            value={newClass.Duration}
                             placeholder="how long does class last..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="intensitylevel"/>Intensity Level:
+                    <label>Intensity Level:</label>
                         <input id=""
-                            name="intensitylevel"
+                            name="IntensityLevel"
                             type="text"
-                            value={newClass.intenstityLevel}
+                            value={newClass.IntensityLevel}
                             placeholder="what is the intensity level..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="location"/>Location:
+                    <label>Location:</label>
                         <input id=""
-                            name="location"
+                            name="Location"
                             type="text"
-                            value={newClass.location}
+                            value={newClass.Location}
                             placeholder="where will class be held..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="attendees"/>Attendees:
+                    <label>Attendees:</label>
                         <input id=""
-                            name="attendees"
-                            type="text"
-                            value={newClass.attendees}
+                            name="Attendees"
+                            type="number"
+                            value={newClass.Attendees}
                             placeholder="how many clients are attending..."
                             onChange={handleChange}
                         />
-                    <label htmlFor="maxsize"/>Max Size:
-                        <input id=""
-                            name="maxsize"
-                            type="text"
-                            value={newClass.maxsize}
+                    <label>Max Class Size:</label>
+                        <input id="final-input"
+                            name="MaxClassSize"
+                            type="number"
+                            value={newClass.MaxClassSize}
                             placeholder="what is the max class size..."
                             onChange={handleChange}
                         />
-                    
-                    <button onSubmit={handleSubmit}>Create Class</button>
-                    <button onSubmit={clearForm}>Clear</button>
+                    <input type='submit' value='Create Class'/>
+                    <button onClick={clearForm}>Clear</button>
+                    <button onClick={routeToClassList}>Cancel</button>
                 </form>
             </classdiv>
         </div>

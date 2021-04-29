@@ -131,19 +131,19 @@ function App() {
       <h1 className="mainHeading">Anywhere Fitness</h1>
 
       <Switch>
-        <Route path='/createclass'>
+        <Route exact path='/classes/createclass'>
           <CreateClass />
         </Route>
 
-        <Route path='/signup'>
+        <Route exact path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
         </Route>
 
-        <Route path='/testing'>
+        <Route exact path='/testing'>
           <Testing />
         </Route>
 
-        <Route path='/'>
+        <Route exact path='/'>
           <HomePage />
         </Route>
       </Switch>

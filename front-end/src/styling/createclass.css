@@ -18,16 +18,19 @@ h2 {
     align-items: center;
     margin: 0 4em;
     padding: 0;
-    
 }
 
 label {
     padding: .8em;
-   
+    font-size: 1em;
 }
 
 input {
     width: 50%;
+}
+
+#final-input {
+    margin-bottom: 50px;
 }
 
 button {
