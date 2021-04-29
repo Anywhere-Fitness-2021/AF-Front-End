@@ -97,7 +97,23 @@ function App() {
       })
       .then(resp => {
         console.log(resp.data);
-        newUser.Role === 'Instructor' ? history.push('/onboarding-instructor') : history.push('/onboarding-user');
+        if (newUser.Role === 'Instructor') {
+          history.push('/onboarding-instructor');
+          setValues({
+            Username: '',
+            Password: '',
+            Role: '',
+            Token: ''
+          });
+        } else {
+          history.push('/onboarding-user');
+          setValues({
+            Username: '',
+            Password: '',
+            Role: '',
+            Token: ''
+          });
+        }
       })
       .catch(err => {
         console.log({ err });
