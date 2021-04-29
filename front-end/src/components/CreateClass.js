@@ -67,7 +67,7 @@ const CreateClass = () => {
     };
 
     const routeToClassList = () => {
-        history.push('/');
+        history.push('/classes');
     };
 
     return (

@@ -167,6 +167,11 @@ h1{
   width: 150px;
 }
 
+#create-option {
+  width: 175px;
+  margin-bottom: 5px;
+}
+
 #insAdd-option {
   width: 150px;
   margin: 5px;
@@ -183,6 +188,11 @@ h1{
 }
 
 #delete-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#removeMyClass-option {
   width: 150px;
   margin: 5px;
 }
