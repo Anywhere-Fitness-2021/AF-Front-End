@@ -2,17 +2,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
-//STYLING IMPORTS
-import './index.css';
-//COMPONENT IMPORTS
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import reportWebVitals from './reportWebVitals';
 
+//STYLING IMPORTS
+import './index.css';
+
+//COMPONENT IMPORTS
+import App from './App';
 import { reducer } from './store';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
