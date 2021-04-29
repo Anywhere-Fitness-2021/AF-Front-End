@@ -25,7 +25,7 @@ const Login = () => {
         .post('https://anywherefitness2021.herokuapp.com/api/users/login', credentials)
         .then((resp) => {
           setLoginError('');
-          window.localStorage.setItem('token', JSON.stringify(resp.data.payload));
+          window.localStorage.setItem('token', JSON.stringify(resp.data.token));
           console.log(resp.data);
           history.push('/');
         })
