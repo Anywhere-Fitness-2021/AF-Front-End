@@ -46,7 +46,6 @@ const Instructor = Yup.object().shape({
 });
 
 function App() {
-
   const [users, setUsers] = useState([]);
   const [values, setValues] = useState(Data);
   const [errors, setErrors] = useState(Data);
@@ -168,8 +167,6 @@ function App() {
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
         </Route>
-
-
 
         <Route path='/'>
           <HomePage />

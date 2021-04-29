@@ -32,6 +32,7 @@ const mapStateToProps = (state) => {
         isLoading: state.IsLoading,
         error: state.Error,
         activeUser: state.ActiveUser,
+        allUsers: state.AllUsers,
         classes: state.Classes
     };
 }
