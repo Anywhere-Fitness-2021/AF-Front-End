@@ -15,6 +15,7 @@ import InstructorOnboarding from './components/InstructorOnboarding';
 import UserOnboarding from './components/UserOnboarding';
 import HomePage from "./components/HomePage";
 import Testing from './components/Testing';
+import Login from './components/Login';
 
 const Data = {
   Username: '',
@@ -133,6 +134,18 @@ function App() {
       <Switch>
         <Route exact path='/classes/createclass'>
           <CreateClass />
+        </Route>
+
+        <Route exact path='/login'>
+          <Login />
+        </Route>
+
+        <Route exact path='/onboarding-instructor'>
+          <InstructorOnboarding />
+        </Route>
+
+        <Route exact path='/onboarding-user'>
+          <UserOnboarding />
         </Route>
 
         <Route exact path='/signup'>

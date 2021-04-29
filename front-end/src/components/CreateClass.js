@@ -40,7 +40,7 @@ const CreateClass = () => {
             .post('https://anywherefitness2021.herokuapp.com/api/classes', newClass)
             .then(resp => {
                 console.log(resp.data);
-                // history.push('/');
+                history.push('/');
             })
             .catch(err => {
                 console.log({ err })
