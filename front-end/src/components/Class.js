@@ -2,7 +2,7 @@ function Class(props) {
     const { name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize } = props;
 
     return (
-        <div className='test-class-data'>
+        <div className='class-data'>
             <h3>Name: {name}</h3>
             <p>Type: {type}</p>
             <p>Start Time: {startTime}</p>

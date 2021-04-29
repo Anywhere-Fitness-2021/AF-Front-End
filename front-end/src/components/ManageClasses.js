@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Class from './Class';
 import { fetchClasses } from '../store';
@@ -7,20 +8,32 @@ import { fetchClasses } from '../store';
 const ManageClasses = (props) => {
     const { fetchClasses } = props;
 
+    const history = useHistory();
+
     useEffect(() => {
         fetchClasses();
     }, [fetchClasses]);
 
+    const routeToLogin = () => {
+        window.localStorage.clear('token')
+        window.localStorage.clear('username');
+        window.localStorage.clear('role');
+        history.push('/login');
+    }
+
     return (
-        <div className='classes-container'>
+        <div className='manage-classes-container'>
             {props.isLoading ? 'Loading...' : null} <br/>
             {props.error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.error}</p> : null} <br/>
             <p>--- Welcome {window.localStorage.getItem('username')}! ---</p>
-            <p>Role: {window.localStorage.getItem('role')}</p><br/>
-            ---List of all our Classes!--- <br/>
-            {props.classes.map(item => (
-                <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} />
-            ))}            
+            <p>Role: {window.localStorage.getItem('role')}</p>
+            <button id='signout-button' onClick={routeToLogin}>Sign Out</button><br/><br/>
+            &nbsp;&nbsp;&nbsp;List of all our Classes: <br/>
+            <div className='classes-container'>
+                {props.classes.map(item => (
+                    <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} />
+                ))}    
+            </div>        
         </div>
     );
 }
