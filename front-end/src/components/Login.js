@@ -35,6 +35,10 @@ const Login = () => {
         });
   };
 
+  const routeToSignUp = () => {
+    history.push('/signup');
+};
+
   return (
     <div>
       <h3>Login to your ANYWHERE FITNESS account!</h3>
@@ -59,7 +63,8 @@ const Login = () => {
           />
           <br/>
           <br/>
-          <input id='login-button' type='submit' value='Log in'/>
+          <input id='login-button' type='submit' value='Login'/>
+          <button onClick={routeToSignUp}>Cancel</button>
         </form>
       </div>
 

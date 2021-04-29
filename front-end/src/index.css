@@ -138,5 +138,7 @@ h1{
 
 #login-button {
   margin-left: 160px;
-  width: 150px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  width: 170px;
 }
