@@ -1,6 +1,6 @@
 //TECH IMPORTS
 import React, { Fragment, useState, useEffect } from "react";
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
 
@@ -16,6 +16,7 @@ import UserOnboarding from './components/UserOnboarding';
 import HomePage from "./components/HomePage";
 import Testing from './components/Testing';
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 const Data = {
   Username: '',
@@ -126,42 +127,42 @@ function App() {
   }, [values]);
 
   return (
-    <Fragment>
-      <div className="logoAndHeading"></div>
-      <img className="logo" src={Logo} alt="gym barbell"/>
-      <h1 className="mainHeading">Anywhere Fitness</h1>
+    <Router>
+      <Fragment>
+        <div className="logoAndHeading"></div>
+        <img className="logo" src={Logo} alt="gym barbell"/>
+        <h1 className="mainHeading">Anywhere Fitness</h1>
 
-      <Switch>
-        <Route exact path='/classes/createclass'>
-          <CreateClass />
-        </Route>
+        <Switch>
+          <PrivateRoute exact path='/classes/createclass' component={CreateClass} />
 
-        <Route exact path='/login'>
-          <Login />
-        </Route>
+          <Route exact path='/login'>
+            <Login />
+          </Route>
 
-        <Route exact path='/onboarding-instructor'>
-          <InstructorOnboarding />
-        </Route>
+          <Route exact path='/onboarding-instructor'>
+            <InstructorOnboarding />
+          </Route>
 
-        <Route exact path='/onboarding-user'>
-          <UserOnboarding />
-        </Route>
+          <Route exact path='/onboarding-user'>
+            <UserOnboarding />
+          </Route>
 
-        <Route exact path='/signup'>
-          <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
-        </Route>
+          <Route exact path='/signup'>
+            <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
+          </Route>
 
-        <Route exact path='/testing'>
-          <Testing />
-        </Route>
+          <Route exact path='/testing'>
+            <Testing />
+          </Route>
 
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-      </Switch>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+        </Switch>
 
-    </Fragment>
+      </Fragment>
+    </Router>
   );
 }
 
