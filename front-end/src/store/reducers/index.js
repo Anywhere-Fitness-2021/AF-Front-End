@@ -8,7 +8,10 @@ import {
     FETCH_ALL_USERS_START,
     FETCH_ALL_USERS_SUCCESS,
     FETCH_ALL_USERS_FAILURE,
-    SET_ACTIVE_USER
+    SET_ACTIVE_USER,
+    SET_MY_CLASS,
+    FETCH_MY_CLASSES,
+    SET_CLASSES
 } from '../actions';
 
 const initialState = {
@@ -16,7 +19,8 @@ const initialState = {
     Error: '',
     ActiveUser: {},
     AllUsers: [],
-    Classes: []
+    Classes: [],
+    MyClasses: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -28,7 +32,8 @@ export const reducer = (state = initialState, action) => {
                 Error: '',
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: []
+                Classes: state.Classes,
+                MyClasses: state.MyClasses
             };
         case FETCH_CLASSES_SUCCESS:
             return {
@@ -37,7 +42,8 @@ export const reducer = (state = initialState, action) => {
                 Error: '',
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: action.payload
+                Classes: action.payload,
+                MyClasses: state.MyClasses
             };
         case FETCH_CLASSES_FAILURE:
             return {
@@ -46,7 +52,8 @@ export const reducer = (state = initialState, action) => {
                 Error: action.payload,
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: []
+                Classes: [],
+                MyClasses: state.MyClasses
             };
         case FETCH_USER_ROLE_START:
             return {
@@ -55,7 +62,8 @@ export const reducer = (state = initialState, action) => {
                 Error: state.Error,
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: state.Classes                
+                Classes: state.Classes ,
+                MyClasses: state.MyClasses               
             }
         case FETCH_USER_ROLE_SUCCESS:
             return {
@@ -67,7 +75,8 @@ export const reducer = (state = initialState, action) => {
                     Role: action.payload.Role
                 },
                 AllUsers: state.AllUsers,
-                Classes: state.Classes                
+                Classes: state.Classes,
+                MyClasses: state.MyClasses              
             }
         case FETCH_USER_ROLE_FAILURE:
             return {
@@ -76,7 +85,8 @@ export const reducer = (state = initialState, action) => {
                 Error: state.Error,
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: state.Classes                
+                Classes: state.Classes,
+                MyClasses: state.MyClasses              
             }
         case FETCH_ALL_USERS_START:
             return {
@@ -85,7 +95,8 @@ export const reducer = (state = initialState, action) => {
                 Error: state.Error,
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: state.Classes
+                Classes: state.Classes,
+                MyClasses: state.MyClasses
             }
         case FETCH_ALL_USERS_SUCCESS:
             return {
@@ -94,7 +105,8 @@ export const reducer = (state = initialState, action) => {
                 Error: state.Error,
                 ActiveUser: state.ActiveUser,
                 AllUsers: action.payload,
-                Classes: state.Classes
+                Classes: state.Classes,
+                MyClasses: state.MyClasses
             }
         case FETCH_ALL_USERS_FAILURE:
             return {
@@ -103,7 +115,8 @@ export const reducer = (state = initialState, action) => {
                 Error: state.Error,
                 ActiveUser: state.ActiveUser,
                 AllUsers: state.AllUsers,
-                Classes: state.Classes
+                Classes: state.Classes,
+                MyClasses: state.MyClasses
             }
         case SET_ACTIVE_USER:
             return {
@@ -115,7 +128,51 @@ export const reducer = (state = initialState, action) => {
                     Role: action.payload.Role
                 },
                 AllUsers: state.AllUsers,
-                Classes: state.Classes
+                Classes: state.Classes,
+                MyClasses: state.MyClasses
+            };
+        case SET_MY_CLASS:
+            return {
+                ...state,
+                IsLoading: state.IsLoading,
+                Error: state.Error,
+                ActiveUser: state.ActiveUser,
+                AllUsers: state.AllUsers,
+                Classes: state.Classes,
+                MyClasses: [
+                    ...state.MyClasses,
+                    {
+                        ClassId: action.payload.ClassId,
+                        Name: action.payload.Name,
+                        Type: action.payload.Type,
+                        StartTime: action.payload.StartTime,
+                        Duration: action.payload.Duration,
+                        IntensityLevel: action.payload.IntensityLevel,
+                        Location: action.payload.Location,
+                        Attendees: action.payload.Attendees,
+                        MaxClassSize: action.payload.MaxClassSize
+                    }
+                ]
+            };
+        case FETCH_MY_CLASSES:
+            return {
+                ...state,
+                IsLoading: state.IsLoading,
+                Error: state.Error,
+                ActiveUser: state.ActiveUser,
+                AllUsers: state.AllUsers,
+                Classes: state.Classes,
+                MyClasses: action.payload
+            };
+        case SET_CLASSES:
+            return {
+                ...state,
+                IsLoading: state.IsLoading,
+                Error: state.Error,
+                ActiveUser: state.ActiveUser,
+                AllUsers: state.AllUsers,
+                Classes: action.payload,
+                MyClasses: state.MyClasses
             };
         default:
             return state;

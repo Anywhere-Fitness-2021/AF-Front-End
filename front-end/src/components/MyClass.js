@@ -1,5 +1,9 @@
 function MyClass(props) {
-    const { name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize, removeMyClass } = props;
+    const { name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize } = props;
+
+    const removeMyClass = () => {
+
+    }
 
     const removeMyClassButton = () => {
         return <button id='removeMyClass-option' onClick={removeMyClass}>Remove Class</button>;

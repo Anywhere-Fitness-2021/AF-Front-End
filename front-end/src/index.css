@@ -148,6 +148,11 @@ h1{
   flex-flow: row wrap;
 }
 
+.my-classes-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .class-data {
   border: double;
   border-radius: 10px;

@@ -1,5 +1,38 @@
+import { connect } from "react-redux";
+import axios from 'axios';
+
+import { setClasses } from '../store'
+
 function Class(props) {
-    const { name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize, addToMyListInstructor, addToMyListClient, updateAClass, deleteAClass } = props;
+
+    const { classId, name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize } = props;
+
+    const addToMyListInstructor = () => {
+
+    }
+
+    const addToMyListClient = () => {
+
+    }
+
+    const deleteAClass = () => {
+        axios
+            .delete(`https://anywherefitness2021.herokuapp.com/api/classes/${classId}`, {
+                headers: {
+                    Authorization: JSON.parse(window.localStorage.getItem('token'))
+                }
+            })
+            .then(resp => {
+                console.log(resp.data);
+            })
+            .catch(err => {
+                console.log({ err })
+            });
+    }
+
+    const updateAClass = () => {
+
+    }
 
     const addToMyListButton = () => {
         if (JSON.parse(window.localStorage.getItem('role')) === 'Instructor') {
@@ -42,4 +75,15 @@ function Class(props) {
     );
 }
 
-export default Class;
+const mapStateToProps = (state) => {
+    return {
+        IsLoading: state.IsLoading,
+        Error: state.Error,
+        ActiveUser: state.ActiveUser,
+        AllUsers: state.AllUsers,
+        Classes: state.Classes,
+        MyClasses: state.MyClasses
+    };
+}
+
+export default connect(mapStateToProps, { setClasses })(Class);

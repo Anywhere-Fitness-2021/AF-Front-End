@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Class from './Class';
-import { fetchClasses } from '../store';
-
-const initialState = [];
+import { fetchClasses, fetchMyClasses } from '../store';
 
 const ManageClasses = (props) => {
-    const { fetchClasses } = props;
-
+    const { fetchClasses, fetchMyClasses} = props;
+    const [myClasses, setMyClasses] = useState([]);
     const history = useHistory();
 
-    const [myClasses, setMyClasses] = useState(initialState);
+    useEffect(() => {
+        fetchMyClasses();
+    }, [fetchMyClasses]);
 
     useEffect(() => {
         fetchClasses();
@@ -37,30 +37,10 @@ const ManageClasses = (props) => {
         }
     }
 
-    const addToMyListInstructor = () => {
-
-    }
-
-    const addToMyListClient = () => {
-
-    }
-
-    const updateAClass = () => {
-
-    }
-
-    const deleteAClass = () => {
-
-    }
-
-    const removeMyClass = () => {
-
-    }
-
     return (
         <div className='manage-classes-container'>
-            {props.isLoading ? 'Loading...' : null} <br/>
-            {props.error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.error}</p> : null} <br/>
+            {props.IsLoading ? 'Loading...' : null} <br/>
+            {props.Error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.Error}</p> : null} <br/>
 
             <p>--- Welcome {window.localStorage.getItem('username')}! ---</p>
             <p>&nbsp;&nbsp;&nbsp;Role: {window.localStorage.getItem('role')}</p>
@@ -70,15 +50,15 @@ const ManageClasses = (props) => {
 
             &nbsp;&nbsp;&nbsp;List of Your Classes: <br/>
             <div className='my-classes-container'>
-                {myClasses.map(item => (
-                    <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} removeMyClass={removeMyClass}/>
-                ))}    
+                {/* {props.MyClasses.length >= 1 ? props.MyClasses.map(item => (
+                    <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} />
+                )) : null}     */}
             </div>  
 
             <br/>&nbsp;&nbsp;&nbsp;List of all our Classes Offered: <br/>
             <div className='classes-container'>
-                {props.classes.map(item => (
-                    <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} addToMyListInstructor={addToMyListInstructor} addToMyListClient={addToMyListClient} updateAClass={updateAClass} deleteAClass={deleteAClass}/>
+                {props.Classes.map(item => (
+                    <Class key={item.ClassId} classId= {item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize}/>
                 ))}    
             </div>        
         </div>
@@ -87,12 +67,13 @@ const ManageClasses = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLoading: state.IsLoading,
-        error: state.Error,
-        activeUser: state.ActiveUser,
-        allUsers: state.AllUsers,
-        classes: state.Classes
+        IsLoading: state.IsLoading,
+        Error: state.Error,
+        ActiveUser: state.ActiveUser,
+        AllUsers: state.AllUsers,
+        Classes: state.Classes,
+        MyClasses: state.MyClasses
     };
 }
 
-export default connect(mapStateToProps, { fetchClasses })(ManageClasses);
+export default connect(mapStateToProps, { fetchClasses, fetchMyClasses })(ManageClasses);
