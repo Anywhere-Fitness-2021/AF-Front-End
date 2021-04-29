@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom'; 
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
-const Login = () => {
+import { setActiveUser } from '../store';
+
+const Login = (props) => {
+
+  const { setActiveUser } = props;
+
   const [credentials, setCredentials] = useState({
     Username: '',
-    Password: ''
+    Password: '',
   });
   const [loginError, setLoginError] = useState('');
   const history = useHistory();
@@ -26,8 +32,11 @@ const Login = () => {
         .then((resp) => {
           setLoginError('');
           window.localStorage.setItem('token', JSON.stringify(resp.data.token));
-          console.log(resp.data);
-          history.push('/');
+          window.localStorage.setItem('username', JSON.stringify(resp.data.userLoggingIn.Username));
+          window.localStorage.setItem('role', JSON.stringify(resp.data.userLoggingIn.Role));
+          console.log(resp.data.userLoggingIn);
+          setActiveUser(resp.data.userLoggingIn);
+          history.push('/classes');
         })
         .catch((err) => {
           console.log({ err })
@@ -73,4 +82,14 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+      isLoading: state.IsLoading,
+      error: state.Error,
+      activeUser: state.ActiveUser,
+      allUsers: state.AllUsers,
+      classes: state.Classes
+  };
+}
+
+export default connect(mapStateToProps, { setActiveUser })(Login);

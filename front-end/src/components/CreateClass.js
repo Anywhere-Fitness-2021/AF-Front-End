@@ -37,10 +37,14 @@ const CreateClass = () => {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-            .post('https://anywherefitness2021.herokuapp.com/api/classes', newClass)
+            .post('https://anywherefitness2021.herokuapp.com/api/classes', newClass, {
+                headers: {
+                    Authorization: JSON.parse(window.localStorage.getItem('token'))
+                }
+            })
             .then(resp => {
                 console.log(resp.data);
-                history.push('/');
+                history.push('/classes');
             })
             .catch(err => {
                 console.log({ err })
@@ -63,7 +67,7 @@ const CreateClass = () => {
     };
 
     const routeToClassList = () => {
-        history.push('/');
+        history.push('/classes');
     };
 
     return (

@@ -142,3 +142,62 @@ h1{
   padding-bottom: 15px;
   width: 170px;
 }
+
+.classes-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.my-classes-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.class-data {
+  border: double;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 10px;
+  margin: 15px;
+  background-color: #04009a;
+  color: #77acf1;
+}
+
+.class-data h3 {
+  color: #3edbf0;
+  text-shadow: 1px 2px 2px white;
+}
+
+#signout-button {
+  width: 150px;
+}
+
+#create-option {
+  width: 175px;
+  margin-bottom: 5px;
+}
+
+#insAdd-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#cliAdd-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#edit-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#delete-option {
+  width: 150px;
+  margin: 5px;
+}
+
+#removeMyClass-option {
+  width: 150px;
+  margin: 5px;
+}

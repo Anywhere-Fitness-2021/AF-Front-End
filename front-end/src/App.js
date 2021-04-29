@@ -14,7 +14,7 @@ import SignUp from './components/SignUp';
 import InstructorOnboarding from './components/InstructorOnboarding';
 import UserOnboarding from './components/UserOnboarding';
 import HomePage from "./components/HomePage";
-import Testing from './components/Testing';
+import ManageClasses from './components/ManageClasses';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -46,7 +46,6 @@ const Instructor = Yup.object().shape({
 });
 
 function App() {
-
   const [users, setUsers] = useState([]);
   const [values, setValues] = useState(Data);
   const [errors, setErrors] = useState(Data);
@@ -151,6 +150,8 @@ function App() {
       <Switch>
         <PrivateRoute path='/classes/createclass' component={CreateClass} />
 
+        <PrivateRoute path='/classes' component={ManageClasses} />
+
         <Route path='/login'>
           <Login />
         </Route>
@@ -165,10 +166,6 @@ function App() {
 
         <Route path='/signup'>
           <SignUp values={values} errors={errors} update={update} submit={submit} disabled={disabled} />
-        </Route>
-
-        <Route path='/testing'>
-          <Testing />
         </Route>
 
         <Route path='/'>

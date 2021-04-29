@@ -1,2 +1,10 @@
 export { reducer } from './reducers';
-export { fetchClasses } from './actions';
+export {
+    fetchUserRole,
+    fetchAllUsers,
+    fetchClasses,
+    setActiveUser,
+    setMyClass,
+    fetchMyClasses,
+    setClasses
+} from './actions';
