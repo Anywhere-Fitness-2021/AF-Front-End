@@ -4,18 +4,14 @@ export default function InstructorOnboarding(){
     return(
         <>
             <div className='instructor-onboarding-container'>
-                <h1>Welcome to Anywhere Fitness!</h1>
-                <p>Here you can:</p>
+                <h3>Thank you for creating your ANYWHERE FITNESS instructor account!</h3>
+                <p>As an instructor, you can...</p>
                 <ul>
-                    <li>Create classes</li>
-                    <li>View number of registered attendees</li>
-                    <li>Set max class size</li>
-                    <li>Set location</li>
-                    <li>Set intensity Level</li>
-                    <li>Set duration</li>
+                    <li>Create, edit, or delete classes in our program</li>
+                    <li>Keep track of the classes that you teach</li>
                 </ul>
             </div>
-            <Link to = "/"><button>Ok</button></Link>
+            <Link to = "/login"><button>Go to Login</button></Link>
         </>       
     )
 }

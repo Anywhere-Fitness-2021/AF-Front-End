@@ -4,16 +4,15 @@ export default function UserOnboarding(){
     return(
         <>
             <div className='user-onboarding-container'>
-                <h1>Welcome to Anywhere Fitness!</h1>
-                <p>Here you can:</p>
+                <h3>Thank you for creating your ANYWHERE FITNESS user account!</h3>
+                <p>As a user, you can...</p>
                 <ul>
-                    <li>Sign Up/Attend Class</li>
-                    <li>View number of registered attendees</li>
-                    <li>View intensity Level</li>
-                    <li>View duration</li>
+                    <li>Browse all the fitness classes we offer</li>
+                    <li>Reserve your spot in a class</li>
+                    <li>Reschedule or cancel your reservations</li>
                 </ul>
             </div>
-            <Link to = "/"><button>Ok</button></Link>
+            <Link to = "/login"><button>Go to Login</button></Link>
         </>
     )
 }
