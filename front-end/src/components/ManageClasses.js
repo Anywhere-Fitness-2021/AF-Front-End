@@ -13,13 +13,11 @@ const ManageClasses = (props) => {
 
     return (
         <div className='classes-container'>
-            <br/>
-            {props.isLoading ? 'Loading...' : '---Not loading at the moment---'} <br/>
-            {props.error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.error}</p> : '---No error to display at the moment---'} <br/><br/>
-            ---The current active user is--- <br/>
-            Username: {props.activeUser.Username} <br/>
-            Role: {props.activeUser.Role} <br/><br/>
-            ---List of all classes--- <br/>
+            {props.isLoading ? 'Loading...' : null} <br/>
+            {props.error ? <p style={{ color: 'red', fontWeight: 'bold' }}>{props.error}</p> : null} <br/>
+            <p>--- Welcome {window.localStorage.getItem('username')}! ---</p>
+            <p>Role: {window.localStorage.getItem('role')}</p><br/>
+            ---List of all our Classes!--- <br/>
             {props.classes.map(item => (
                 <Class key={item.ClassId} name={item.Name} type={item.Type} startTime={item.StartTime} duration={item.Duration} intensityLevel={item.IntensityLevel} location={item.Location} attendees={item.Attendees} maxClassSize={item.MaxClassSize} />
             ))}            

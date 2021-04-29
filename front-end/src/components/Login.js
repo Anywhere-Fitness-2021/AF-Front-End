@@ -32,6 +32,8 @@ const Login = (props) => {
         .then((resp) => {
           setLoginError('');
           window.localStorage.setItem('token', JSON.stringify(resp.data.token));
+          window.localStorage.setItem('username', JSON.stringify(resp.data.userLoggingIn.Username));
+          window.localStorage.setItem('role', JSON.stringify(resp.data.userLoggingIn.Role));
           console.log(resp.data.userLoggingIn);
           setActiveUser(resp.data.userLoggingIn);
           history.push('/classes');
