@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Class from './Class';
+import { fetchClasses } from '../store';
 
 const ManageClasses = (props) => {
+    const { fetchClasses } = props;
+
+    useEffect(() => {
+        fetchClasses();
+    }, [fetchClasses]);
 
     return (
         <div className='classes-container'>
@@ -29,4 +36,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(ManageClasses);
+export default connect(mapStateToProps, { fetchClasses })(ManageClasses);

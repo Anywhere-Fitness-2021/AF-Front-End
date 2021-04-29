@@ -27,7 +27,7 @@ export const reducer = (state = initialState, action) => {
                 IsLoading: false,
                 Error: '',
                 ActiveUser: state.ActiveUser,
-                Classes: action.payload
+                Classes: action.payload.data
             };
         case FETCH_CLASSES_FAILURE:
             return {

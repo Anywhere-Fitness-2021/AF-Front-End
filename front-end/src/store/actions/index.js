@@ -7,16 +7,14 @@ export const fetchClasses = () => {
     return (dispatch) => {
         dispatch({ type: FETCH_CLASSES_START });
         axios
-            .get('', {
-                headers: { Authorization: JSON.parse(window.localStorage.getItem('token')) }
-            })
+            .get('https://anywherefitness2021.herokuapp.com/api/classes')
             .then(resp => {
                 console.log(resp.data);
-                // dispatch({ type: FETCH_CLASSES_SUCCESS, payload: resp.data.classes });
+                dispatch({ type: FETCH_CLASSES_SUCCESS, payload: resp });
             })
             .catch(err => {
                 console.log(err);
-                // dispatch({ type: FETCH_CLASSES_FAILURE, payload: err.message });
+                dispatch({ type: FETCH_CLASSES_FAILURE, payload: err.message });
             });
     };
 }
